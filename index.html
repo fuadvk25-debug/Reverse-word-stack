@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#10131f" />
+  <meta name="description" content="An interactive visual playground for learning how a stack reverses a sequence of words using LIFO." />
+  <title>StackLab — Reverse a Word Stack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="StackLab home"><span class="brand-mark">S</span><span>stack<span class="brand-light">lab</span></span></a>
+    <div class="top-tag"><span class="live-dot"></span> INTERACTIVE DATA STRUCTURES</div>
+    <a class="github-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="eyebrow"><span class="eyebrow-line"></span> THE STACK PLAYGROUND <span class="eyebrow-line"></span></div>
+      <h1>Reverse a <span>word stack.</span></h1>
+      <p class="hero-copy">See how a simple data structure flips the order of words.<br class="desktop-break"> Add words, then let <strong>LIFO</strong> do its thing.</p>
+      <div class="concept-pills"><span>01 &nbsp; PUSH</span><span>02 &nbsp; POP</span><span>03 &nbsp; REVERSE</span></div>
+    </section>
+
+    <section class="workspace" aria-label="Word stack playground">
+      <div class="panel input-panel">
+        <div class="panel-heading"><div><span class="step-label">STEP 01</span><h2>Build your stack</h2></div><span class="count" id="wordCount">0 / 8</span></div>
+        <p class="panel-desc">Enter a word and push it onto the stack. The newest word goes on top.</p>
+        <form id="wordForm" class="entry-form">
+          <label class="sr-only" for="wordInput">Enter a word</label>
+          <input id="wordInput" type="text" maxlength="18" placeholder="Type a word…" autocomplete="off" />
+          <button class="push-button" type="submit">Push <span>＋</span></button>
+        </form>
+        <div class="quick-add"><span>TRY A SAMPLE</span><button type="button" id="sampleButton">Add “HELLO WORLD STACK”</button></div>
+        <div class="stack-area">
+          <div class="stack-caption"><span>TOP OF STACK</span><span class="arrow-down">↓</span></div>
+          <div class="stack-vessel" id="stackVessel"><div class="empty-state" id="emptyState"><span class="empty-icon">＋</span><span>Your words will appear here</span><small>Push your first word to begin</small></div></div>
+          <div class="stack-base"><span></span><b>STACK</b><span></span></div>
+        </div>
+        <div class="panel-footer"><span><i class="legend-dot top-dot"></i> TOP = LAST IN</span><span><i class="legend-dot"></i> BOTTOM = FIRST IN</span></div>
+      </div>
+
+      <div class="process-column">
+        <div class="process-orb"><span>↓</span></div>
+        <div class="process-label">LIFO<br><small>IN ACTION</small></div>
+        <div class="process-dash"></div>
+        <button id="reverseButton" class="reverse-button" type="button" disabled><span class="reverse-icon">↻</span><span>Reverse stack</span><small>POP → OUTPUT</small></button>
+        <button id="resetButton" class="reset-button" type="button">↺ &nbsp; Reset</button>
+      </div>
+
+      <div class="panel output-panel">
+        <div class="panel-heading"><div><span class="step-label output-step">STEP 02</span><h2>Reversed result</h2></div><span class="result-status" id="resultStatus">WAITING</span></div>
+        <p class="panel-desc">Each pop removes the top word and adds it to the output.</p>
+        <div class="output-area" id="outputArea"><div class="output-placeholder"><span class="output-symbol">↙</span><span>Your reversed words<br>will land here.</span></div></div>
+        <div class="result-bar"><span>OUTPUT SEQUENCE</span><strong id="outputSequence">—</strong></div>
+        <div class="success-note" id="successNote"><span>✦</span><span>Stack reversed successfully. That's LIFO in action.</span></div>
+      </div>
+    </section>
+
+    <section class="explain-section">
+      <div class="explain-heading"><span class="step-label">THE IDEA</span><h2>Last in. <span>First out.</span></h2><p>A stack follows one simple rule: the last item you add is the first item you remove.</p></div>
+      <div class="logic-grid">
+        <article class="logic-card"><div class="logic-number">01</div><div class="logic-icon">↑</div><h3>Push</h3><p>Add each word to the top of the stack. Every new word sits above the previous one.</p><code>stack.push(word)</code></article>
+        <article class="logic-card"><div class="logic-number">02</div><div class="logic-icon pop-icon">↓</div><h3>Pop</h3><p>Remove words one by one from the top. The most recently added word comes out first.</p><code>word = stack.pop()</code></article>
+        <article class="logic-card"><div class="logic-number">03</div><div class="logic-icon check-icon">✓</div><h3>Reversed</h3><p>Collect the popped words in order. The output is now the exact reverse of the input.</p><code>output.push(word)</code></article>
+      </div>
+    </section>
+    <footer><div class="footer-brand"><span class="brand-mark">S</span> stacklab</div><span>BUILT TO MAKE DATA STRUCTURES CLICK.</span><span>© 2026 STACKLAB</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
